@@ -1,4 +1,7 @@
 import React from 'react';
+import io from 'socket.io-client';
+import axios from 'axios'
+
 import {
   TextInput,
   Text,
@@ -8,7 +11,7 @@ import {
   View,
   Button
 } from 'react-native';
-import { joinRoom,sendMessage} from '../service/userservice';
+import { joinRoom,} from '../service/userservice';
 
 import { MonoText } from '../components/StyledText';
 
@@ -20,7 +23,15 @@ export default class HomeScreen extends React.Component {
   constructor(props){
     super(props);
     this.state = { username : undefined}
+    this.socket = io('http://localhost:5000')
+    this.sendMessage = this.sendMessage.bind(this)
   }
+
+  sendMessage(message){
+
+    this.socket.emit('message',{message});s
+    this.socket.on('msg', data => console.log(data) )
+}
 
   render() {
     return (
@@ -30,15 +41,12 @@ export default class HomeScreen extends React.Component {
           Welcome to the chat, please choose your username.
         </Text>
         <TextInput
-
               placeholder="Type here to translate!"
               onChangeText={(username) => this.setState({username})}
             />
           <Button
             onPress={() => {
-              console.log("test")
-              joinRoom(this.state.username);
-              sendMessage("test")
+              this.sendMessage(this.state.username)
             }}
             title="Press Me"
           />
