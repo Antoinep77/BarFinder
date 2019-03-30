@@ -1,12 +1,7 @@
-var io = require( 'socket.io-client');
-
-var user = undefined;
+import io from 'socket.io-client';
  
 const socket = io('http://localhost:5000');
 
-function sendMessage(message){
+export function sendMessage(message){
     socket.emit('message',{message});
-    socket.on('msg', data => console.log(data))
 }
-
-sendMessage("test")
