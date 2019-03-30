@@ -8,8 +8,7 @@ class Chat extends Component {
         super(props);
         this.socket = io('http://localhost:5000');
         this.state = {
-            messages: [
-            ]
+            messages: []
         }
 
         this.socket.on('msg',msg =>{
