@@ -35,7 +35,7 @@ class Chat extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div>
                 <Messages currentMember={this.props.user} messages={this.state.messages} />
                 <Input onMessageSend={this.onMessageSend} />
             </div>
