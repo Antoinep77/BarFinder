@@ -10,7 +10,7 @@ module.exports = (msgText,username) => {
             console.log(msgText)
             console.log(regexpPattern)
             if(regexpPattern.test(msgText.toLowerCase())){
-                missions.findByIdAndUpdate(m._id,{point}).then()
+                missions.findByIdAndUpdate(m._id,{current:false,point}).then()
                 console.log("mission achieve")
                 return true;
             }

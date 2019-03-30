@@ -5,6 +5,9 @@ var missions = require("./models/mission")
 var mongoose = require('mongoose');
 var checkWords = require('./checkMissions/checkWord');
 
+var messageRouter = require('./routes/messages');
+var missionRouter = require('./routes/missions');
+
 mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 const app = express()
@@ -15,26 +18,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.get('/messages', (req,res,next) =>{
-  messages.find().then(msgList => res.json(msgList))
-    .catch(console.log)
-})
+app.use('/messages',messageRouter)
+app.use('/missions', missionRouter)
 
-app.post('/mission/:user/:word', (req,res,next) =>{
-  missions.create({word: req.params.word, username: req.params.user, current: true})
-  .then(m => res.json(m))
-    .catch(console.log)
-})
-
-app.get('/mission', (req,res,next) =>{
-  missions.find()
-  .then(missionList => res.json(missionList))
-    .catch(console.log)
-})
-
-app.delete('/messages', (req,res,next) =>{
-  messages.delete().then(r => res.json(r))
-    .catch(console.log)
+app.listen(4000, function () {
+  console.log('Example app listening on port 3000!')
 })
 
 
@@ -48,6 +36,3 @@ io.on('connection', function (socket) {
   });
 });
 
-app.listen(4000, function () {
-  console.log('Example app listening on port 3000!')
-})
