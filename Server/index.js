@@ -6,8 +6,19 @@ mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 const app = express()
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.get('/messages', (req,res,next) =>{
   messages.find().then(msgList => res.json(msgList))
+    .catch(console.log)
+})
+
+app.delete('/messages', (req,res,next) =>{
+  messages.delete().then(r => res.json(r))
     .catch(console.log)
 })
 
