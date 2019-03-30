@@ -4,8 +4,10 @@ import React from "react";
 class Messages extends Component {
     renderMessage(message) {
         const { id, member, text } = message;
+        console.log(member.username);
         const { currentMember } = this.props;
-        const messageFromMe = member.id === currentMember.id;
+        console.log(currentMember.username);
+        const messageFromMe = member.username === currentMember.username;
         const className = messageFromMe ?
             "Messages-message currentMember" : "Messages-message";
         return (

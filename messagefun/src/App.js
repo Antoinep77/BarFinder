@@ -12,7 +12,9 @@ class App extends Component {
   }
   onSubmit = user => {
     this.setState({
-      user
+      user : {
+        username:user
+      }
     })
   }
   render() {
