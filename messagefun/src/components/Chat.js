@@ -6,38 +6,38 @@ import io from 'socket.io-client';
 class Chat extends Component {
     constructor(props) {
         super(props);
-        this.socket = io('http://localhost:5000');
+        this.socket = io('http://192.168.43.173:5000');
         this.state = {
             messages: []
         }
 
-        this.socket.on('msg',msg =>{
+        this.socket.on('msg', msg => {
             var messages = this.state.messages;
             messages.push(msg);
-            this.setState({messages})
+            this.setState({ messages })
         });
         this.onMessageSend = this.onMessageSend.bind(this)
 
     }
 
-    onMessageSend = message =>{
+    onMessageSend = message => {
         let newMessage = {
-            id:this.state.messages.length+1,
-            text:message,
-            member:this.props.user
+            id: this.state.messages.length + 1,
+            text: message,
+            member: this.props.user
         }
-        this.socket.emit('msg',newMessage)
+        this.socket.emit('msg', newMessage)
         //this.setState(prevState => ({
-       //     messages : [...prevState.messages, newMessage]
-    //    }))
+        //     messages : [...prevState.messages, newMessage]
+        //    }))
     }
 
     render() {
         return (
-        <div id="chat">
-            <Messages currentMember={this.props.user} messages={this.state.messages}/>
-            <Input onMessageSend={this.onMessageSend}/>
-        </div>
+            <div>
+                <Messages currentMember={this.props.user} messages={this.state.messages} />
+                <Input onMessageSend={this.onMessageSend} />
+            </div>
         )
     }
 }

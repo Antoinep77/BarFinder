@@ -4,16 +4,16 @@ import Login from './components/Login';
 import Chat from './components/Chat';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
-    this.state={
-      user : undefined
+    this.state = {
+      user: undefined
     }
   }
   onSubmit = user => {
     this.setState({
-      user : {
-        username:user
+      user: {
+        username: user
       }
     })
   }
@@ -21,8 +21,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          {this.state.user ? <Chat user={this.state.user}/> : <Login onSubmit={this.onSubmit}/>}
+          <div className="App-header">
+            <h1>My Chat App</h1>
+          </div>
         </header>
+        {this.state.user ? <Chat user={this.state.user} /> : <Login onSubmit={this.onSubmit} />}
       </div>
     );
   }
