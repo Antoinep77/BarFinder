@@ -18,8 +18,11 @@ class Login extends Component {
 
     render() {
         return (
+            <div className="Login">
+            <h1>Welcome to the chat !</h1> 
+            <h2>Please enter your username :</h2>
             <form onSubmit={e => this.onSubmit(e)}>
-                <h1>Welcome to the chat, please enter your username</h1>
+            
                 <input
                     onChange={e => this.onChange(e)}
                     value={this.state.username}
@@ -28,6 +31,7 @@ class Login extends Component {
                 />
                 <button>Send</button>
             </form>
+            </div>
         );
     }
 }
