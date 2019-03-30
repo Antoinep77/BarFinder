@@ -10,7 +10,7 @@ class App extends Component {
       user : undefined
     }
   }
-  onSubmit(user){
+  onSubmit = user => {
     this.setState({
       user
     })
