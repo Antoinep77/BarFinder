@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var messageSchema = new Schema({
   text:  String,
-  member: String
+  member: {username: String}
 });
 
-export var message = mongoose.model('message', messageSchema);
+module.exports = mongoose.model('message', messageSchema);

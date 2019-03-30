@@ -9,20 +9,6 @@ class Chat extends Component {
         this.socket = io('http://localhost:5000');
         this.state = {
             messages: [
-                {
-                    id:1,
-                    text: "Hi clément",
-                    member: {
-                        username: "badrdr"
-                    }
-                },
-                {
-                    id:2,
-                    text: "Hi Badr !",
-                    member: {
-                        username: "clemclem"
-                    }
-                }
             ]
         }
 
@@ -42,9 +28,9 @@ class Chat extends Component {
             member:this.props.user
         }
         this.socket.emit('msg',newMessage)
-        this.setState(prevState => ({
-            messages : [...prevState.messages, newMessage]
-        }))
+        //this.setState(prevState => ({
+       //     messages : [...prevState.messages, newMessage]
+    //    }))
     }
 
     render() {

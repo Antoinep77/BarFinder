@@ -7,4 +7,4 @@ var missionSchema = new Schema({
   point: Number
 });
 
-export var mission = mongoose.model('mission', missionSchema);
+module.exports = mongoose.model('mission', missionSchema);
