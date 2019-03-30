@@ -21,10 +21,7 @@ class Chat extends Component {
                         username: "clemclem"
                     }
                 }
-            ],
-            member: {
-                username: "badrdr"
-            }
+            ]
         }
     }
 
@@ -32,7 +29,7 @@ class Chat extends Component {
         let newMessage = {
             id:this.state.messages.length+1,
             text:message,
-            member:this.state.member
+            member:this.props.user
         }
         this.setState(prevState => ({
             messages : [...prevState.messages, newMessage]
@@ -42,7 +39,7 @@ class Chat extends Component {
     render() {
         return (
         <div id="chat">
-            <Messages currentMember={this.state.member} messages={this.state.messages}/>
+            <Messages currentMember={this.props.user} messages={this.state.messages}/>
             <Input onMessageSend={this.onMessageSend}/>
         </div>
         )
