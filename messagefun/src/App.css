@@ -29,9 +29,16 @@
     margin-right:50vw;
   }
   
+  .Chat{
+    overflow:auto;
+    height:100vh;
+    float: right;    
+    position: relative;
+  }
+
   .Messages-list {
     padding: 20px 0;
-    max-width: 900px;
+    max-width: 800px;
     width: 100%;
     margin: 0 auto;
     list-style: none;
