@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Messages from "./Messages";
 import Input from "./Input";
+import io from 'socket.io-client';
 
 class Chat extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.socket = io('http://localhost:5000');
         this.state = {
             messages: [
                 {
@@ -26,6 +28,14 @@ class Chat extends Component {
                 username: "badrdr"
             }
         }
+
+        this.socket.on('msg',msg =>{
+            var messages = this.state.messages;
+            messages.push(msg);
+            this.setState({messages})
+        });
+        this.onMessageSend = this.onMessageSend.bind(this)
+
     }
 
     onMessageSend = message =>{
@@ -34,6 +44,7 @@ class Chat extends Component {
             text:message,
             member:this.state.member
         }
+        this.socket.emit('msg',newMessage)
         this.setState(prevState => ({
             messages : [...prevState.messages, newMessage]
         }))
