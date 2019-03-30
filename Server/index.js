@@ -6,6 +6,10 @@ mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 const app = express()
 
+app.get('/messages', (req,res,next) =>{
+  
+})
+
 
 io.on('connection', function (socket) {
   console.log("connected")
