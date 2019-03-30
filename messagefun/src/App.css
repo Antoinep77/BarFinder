@@ -12,6 +12,22 @@
     text-align: center;
     color: white;
   }
+
+  .Login h1 {
+    margin-bottom:5vh;
+    text-align:center;
+  }
+
+  .Login h2 {
+    
+    text-align:center;
+  }
+  .Login form {
+    margin-bottom:50vh;
+    width:10vw;
+    text-align : center;
+    margin-right:50vw;
+  }
   
   .Messages-list {
     padding: 20px 0;
