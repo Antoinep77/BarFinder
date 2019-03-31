@@ -14,5 +14,6 @@ module.exports = (username) => {
         username,
         current:true,
         word:generateWord(),
+        blocked: false
     }
 }
