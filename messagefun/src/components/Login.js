@@ -52,7 +52,8 @@ class Login extends Component {
                     <label><input type="radio" name="animal" value="1951462" onChange={e => this.onChangeRadio(e)}/><img src='logos/noun_Animal_1951462.png'></img></label>
                     <label><input type="radio" name="animal" value="1951466" onChange={e => this.onChangeRadio(e)}/><img src='logos/noun_Animal_1951466.png'></img></label>
                     <label><input type="radio" name="animal" value="2355613" onChange={e => this.onChangeRadio(e)}/><img src='logos/noun_Animal_2355613.png'></img></label>
-                    <label><input type="radio" name="animal" value="1046552" onChange={e => this.onChangeRadio(e)}/><img src='logos/noun_Beaver_1046552.png'></img></label>
+                    <label><input type="radio" name="animal" value="1046552" onChange={e => this.onChangeRadio(e)}/><img src='logos/noun_Animal_1046552.png'></img></label>
+                    <label><input type="radio" name="animal" value="411146" onChange={e => this.onChangeRadio(e)}/><img src='logos/noun_Animal_411146.png'></img></label>
                 </div>
                 
             </form>

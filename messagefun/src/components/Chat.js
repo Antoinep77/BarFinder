@@ -64,7 +64,7 @@ class Chat extends Component {
                     <div class="col-2 coins">
                         <h5>4000 coins</h5>
                         <img src='coins.svg'></img>
-                        {mission}
+                        <div class="mission">{mission}</div>
                     </div>
 
                 </div>

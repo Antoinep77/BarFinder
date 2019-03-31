@@ -71,6 +71,7 @@
   
   .Message-content {
     display: inline-block;
+    
   }
   
   .currentMember > .Message-content {
@@ -100,6 +101,7 @@
     background-color: cornflowerblue;
     color: white;
     display: inline-block;
+    cursor:pointer;
   }
   
   .currentMember > .Message-content .text {
@@ -140,8 +142,11 @@
     background-color: #eee;
     border-radius: 12px;
     font-size: 5;
+    cursor:pointer;
   }
   
+
+
   .reaction li {
     float: left;
   }
@@ -156,5 +161,13 @@
   
   /* Change the link color to #111 (black) on hover */
   .reaction li a:hover {
-    background-color: #111;
+    background-color:grey;
+  }
+
+  .mission {
+    background-color:cornflowerblue;
+    text-align:center;
+    color:white;
+    border-radius:4px;
+    margin-top:7vh;
   }
