@@ -42,7 +42,7 @@ class Chat extends Component {
     }
 
     onReact = (_id, reaction) => {
-        this.props.socket.emit('reaction', {_id,reaction,currentMember:this.props.currentMember});
+        this.props.socket.emit('reaction', {_id,reaction,user:this.props.user.username});
     }
 
     render() {
