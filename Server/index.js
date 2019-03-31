@@ -30,6 +30,13 @@ app.listen(4000, function () {
   console.log('Example app listening on port 3000!')
 })
 
+app.delete('/reset',(req,res,next)=>{
+  messages.deleteMany()
+  .then(n=>  missions.deleteMany())
+  .then(n=> users.deleteMany())
+  .then(n=>res.json(n))
+})
+
 var scoreMap = {complete:1000,blocked:500,failed:300}
 
 
@@ -61,7 +68,7 @@ io.on('connection', function (socket) {
 
   socket.on('reaction', reaction => {
     if (reaction.reaction == "nope") {
-      missions.findOne({ trigger_msg_id: reaction._id }).then(m => {
+      missions.findOne({ trigger_msg_id: reaction._id,achieved:false, blocked:false }).then(m => {
         if (m) {
           missions.findByIdAndUpdate(m._id, { blocked: true })
             .then(newM => io.emit('mission_blocked', { user: reaction.user, mission: newM }))
@@ -72,7 +79,7 @@ io.on('connection', function (socket) {
 
         } else {
           io.emit('mission_blocked_failed', { user: reaction.user })
-          users.findOneAndUpdate({username:reaction.user},{$inc:{score: scoreMap.failed}})
+          users.findOneAndUpdate({username:reaction.user},{$inc:{score: -scoreMap.failed}})
           .then(u => users.find({}, null,{sort:{score: -1 }}))
           .then(listUsers => io.emit('score',listUsers))
         }
@@ -97,7 +104,7 @@ io.on('connection', function (socket) {
                 missions.findByIdAndUpdate(m._id,{achieved:true})
                 .then(m =>{
                    io.emit('mission_complete', { message: msg, mission: m });
-                    return m.user
+                    return m.username
                   }).then(u =>users.findOneAndUpdate({username:u},{$inc:{score: scoreMap.complete}}))
                 .then(u => users.find({}, null,{sort:{score: -1 }}))
                 .then(listUsers => io.emit('score',listUsers))

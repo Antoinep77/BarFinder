@@ -57,6 +57,9 @@ class Chat extends Component {
                 <h4>Mission</h4>
                 <p>Casez le mot : {this.props.mission.word}</p>
             </div> : "No mission";
+        let score = 0;
+        console.log(this.state.scores);
+        this.state.scores.forEach(user => score = user.username === this.props.user.username ? user.score : score);
         return (
             <div className='container'>
                 <div className='row'>
@@ -68,7 +71,7 @@ class Chat extends Component {
                     </div>
 
                     <div class="col-2 coins">
-                        <h5>4000 coins</h5>
+                        <h5>{score} coins</h5>
                         <img src='coins.svg'></img>
                         <div class="mission">{mission}</div>
                         <table class="table">
