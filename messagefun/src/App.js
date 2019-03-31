@@ -32,7 +32,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <div className="App-header">
-            <h1>My Chat App</h1>
+            <h1>Miel Cimetière et Tradition</h1>
           </div>
         </header>
         {this.state.user ? <Chat user={this.state.user} mission={this.state.mission} socket={this.socket}/> : <Login onSubmit={this.onSubmit} />}
