@@ -11,7 +11,7 @@ class Message extends Component {
     }
 
     showReaction = () => {
-        this.setState({ reaction: true })
+        this.setState({ reaction: !this.state.reaction })
     }
 
     hideReaction = () => {
