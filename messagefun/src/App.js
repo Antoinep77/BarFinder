@@ -7,13 +7,15 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: undefined
+      user: undefined,
+      animal : undefined
     }
   }
-  onSubmit = user => {
+  onSubmit = (user,animal) => {
     this.setState({
       user: {
-        username: user
+        username: user,
+        animal: animal
       }
     })
   }

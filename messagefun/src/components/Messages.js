@@ -11,6 +11,7 @@ class Messages extends Component {
         const messageFromMe = member.username === currentMember.username;
         const className = messageFromMe ?
             "Messages-message currentMember" : "Messages-message";
+
         return (
             <li className={className} key={id} >
                 <span

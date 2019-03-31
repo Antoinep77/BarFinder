@@ -8,12 +8,12 @@ class Chat extends Component {
 
     constructor(props) {
         super(props);
-        this.socket = io('http://192.168.43.88:5000');
+        this.socket = io('http://192.168.43.173:5000');
         this.state = {
             messages: []
         }
 
-        axios.get('http://192.168.43.88:4000/messages').then(m => {
+        axios.get('http://192.168.43.173:4000/messages').then(m => {
             this.setState({messages:m.data});
 
     })
@@ -46,11 +46,23 @@ class Chat extends Component {
     
     render() {
         return (
-            <div>
-                <div class="Chat" id="Chat">
-                <Messages currentMember={this.props.user} messages={this.state.messages} />
+            <div class='container'>
+                <div class='row'>
+                    <div class="col-9">
+                        <div class="Chat" id="Chat">
+                        <Messages currentMember={this.props.user} messages={this.state.messages} />
+                        </div>
+                        <Input onMessageSend={this.onMessageSend} />
+                    </div>
+
+                    <div class="col-3 coins">
+                        <h5>4000 coins</h5>
+                        <img src='coins.svg'></img>
+                    </div>
+                
                 </div>
-                <Input onMessageSend={this.onMessageSend} />
+                
+                
             </div>
             
         )

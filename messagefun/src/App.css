@@ -43,6 +43,9 @@
 
   }
 
+  .coins{
+    max-width:10vw;
+  }
 
   .Messages-list {
     padding: 20px 0;
