@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Reaction from "./Reaction";
+import ReactionCount from "./ReactionCount";
 import React from "react";
 
 class Message extends Component {
@@ -43,6 +44,7 @@ class Message extends Component {
                     </div>
                     <div className="text" onClick={this.showReaction}>{text}</div>
                     <Reaction active={this.state.reaction} hide={this.hideReaction} onReact={(reaction) => this.props.onReact(_id, reaction)}/>
+                    <ReactionCount message={this.props.message}/>
                 </div>
             </li>
         );

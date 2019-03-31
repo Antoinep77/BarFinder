@@ -69,8 +69,12 @@ io.on('connection', function (socket) {
   socket.on('reaction', reaction => {
 
     var update = {};
+    console.log(reaction)
     update[reaction.reaction] = reaction.user
-    messages.findOneAndUpdate({_id:reaction._id}, {$push: update})
+    messages.findByIdAndUpdate(reaction._id, {$push: update},{new:true})
+    .then(msg => {console.log(msg);io.emit('update_message',msg)})
+    .catch(console.log)
+
     missions.findOne({ trigger_msg_id: reaction._id, achieved: false, blocked: false }).then(m => {
       if (reaction.reaction == "nope") {
         if (m) {
@@ -109,7 +113,7 @@ io.on('connection', function (socket) {
                   .then(m => {
                     io.emit('mission_complete', { message: msg, mission: m });
                     return m.username
-                  }).then(u => users.findOneAndUpdate({ username: u }, { $inc: { score: scoreMap.complete * m.split(" ").length } }))
+                  }).then(u => users.findOneAndUpdate({ username: u }, { $inc: { score: scoreMap.complete * newMsg.text.split(" ").length } }))
                   .then(u => users.find({}, null, { sort: { score: -1 } }))
                   .then(listUsers => io.emit('score', listUsers))
 
