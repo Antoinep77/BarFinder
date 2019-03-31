@@ -65,6 +65,22 @@ class Chat extends Component {
                         <h5>4000 coins</h5>
                         <img src='coins.svg'></img>
                         <div class="mission">{mission}</div>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Pierre</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Paul</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Jack</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
