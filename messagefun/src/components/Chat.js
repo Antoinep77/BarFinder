@@ -49,7 +49,7 @@ class Chat extends Component {
     render() {
         return (
             <div>
-                <div class="Chat" id="Chat">
+                <div className="Chat" id="Chat">
                 <Messages currentMember={this.props.user} messages={this.state.messages} />
                 </div>
                 <Input onMessageSend={this.onMessageSend} />

@@ -14,6 +14,10 @@ class Message extends Component {
         this.setState({ reaction: true })
     }
 
+    hideReaction = () => {
+        this.setState({ reaction: false })
+    }
+
     render() {
         const { _id, member, text } = this.props.message;
         const { currentMember } = this.props;
@@ -31,7 +35,7 @@ class Message extends Component {
                         {member.username}
                     </div>
                     <div className="text" onClick={this.showReaction}>{text}</div>
-                    <Reaction active={this.state.reaction} />
+                    <Reaction active={this.state.reaction} hide={this.hideReaction}/>
                 </div>
             </li>
         );

@@ -21,9 +21,9 @@ class Login extends Component {
             <div className="Login">
             <h1>Welcome to the chat !</h1> 
             
-            <form class="form-inline" onSubmit={e => this.onSubmit(e)}>
+            <form className="form-inline" onSubmit={e => this.onSubmit(e)}>
                 
-                <div class="form-group usernameLogin">
+                <div className="form-group usernameLogin">
                 <h2>Please enter your username :</h2>
                 <input
                     onChange={e => this.onChange(e)}
@@ -33,7 +33,7 @@ class Login extends Component {
                 />
                 <button>Send</button>
                 </div>
-                <div class="form-check animals">
+                <div className="form-check animals">
                     <label><input type="radio" name="optradio"/><img src='logos/noun_Animal_1430104.png'></img></label>
                     <label><input type="radio" name="optradio"/><img src='logos/noun_Animal_1658831.png'></img></label>
                     <label><input type="radio" name="optradio"/><img src='logos/noun_Animal_1658853.png'></img></label>

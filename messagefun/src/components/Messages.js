@@ -1,6 +1,5 @@
 import { Component } from "react";
 import Message from "./Message";
-import Reaction from "./Reaction";
 import React from "react";
 
 
