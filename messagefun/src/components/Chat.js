@@ -7,12 +7,13 @@ class Chat extends Component {
 
     constructor(props) {
         super(props);
-        
+
         this.state = {
-            messages: []
+            messages: [],
+            scores: []
         }
 
-        axios.get('http://192.168.43.173:4000/messages').then(m => {
+        axios.get('http://192.168.43.88:4000/messages').then(m => {
             this.setState({ messages: m.data });
         }).catch(console.log)
 
@@ -21,6 +22,11 @@ class Chat extends Component {
             messages.push(msg);
             this.setState({ messages })
         });
+
+        this.props.socket.on('score', scores => {
+            console.log("scores!")
+            this.setState({ scores })
+        })
         this.onMessageSend = this.onMessageSend.bind(this)
 
     }
@@ -42,21 +48,21 @@ class Chat extends Component {
     }
 
     onReact = (_id, reaction) => {
-        this.props.socket.emit('reaction', {_id,reaction,user:this.props.user.username});
+        this.props.socket.emit('reaction', { _id, reaction, user: this.props.user.username });
     }
 
     render() {
-        let mission = this.props.mission ? 
-        <div className="mission">
-            <h3>Mission</h3>
-            <p>Casez le mot : {this.props.mission.word}</p>
-        </div> : "No mission";
+        let mission = this.props.mission ?
+            <div className="mission">
+                <h4>Mission</h4>
+                <p>Casez le mot : {this.props.mission.word}</p>
+            </div> : "No mission";
         return (
             <div className='container'>
                 <div className='row'>
                     <div className="col-10">
                         <div className="Chat" id="Chat">
-                            <Messages currentMember={this.props.user} messages={this.state.messages} onReact={this.onReact}/>
+                            <Messages currentMember={this.props.user} messages={this.state.messages} onReact={this.onReact} />
                         </div>
                         <Input onMessageSend={this.onMessageSend} />
                     </div>
@@ -67,18 +73,12 @@ class Chat extends Component {
                         <div class="mission">{mission}</div>
                         <table class="table">
                             <tbody>
+                                {this.state.scores.map((user, ind) => 
                                 <tr>
-                                    <td>1</td>
-                                    <td>Pierre</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Paul</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Jack</td>
-                                </tr>
+                                    <td>{ind}</td>
+                                    <td>{user.username}</td>
+                                    <td>{user.score}</td>
+                                </tr>)}
                             </tbody>
                         </table>
                     </div>
