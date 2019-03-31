@@ -8,7 +8,7 @@ router.get('/', (req,res,next) =>{
   })
 
 router.delete('/', (req,res,next) =>{
-messages.delete().then(r => res.json(r))
+  messages.deleteMany().then(r => res.json(r))
     .catch(console.log)
 })
 
