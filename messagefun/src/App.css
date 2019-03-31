@@ -39,10 +39,10 @@
   
   .Chat{
     overflow:auto;
-    height:100vh;
-    float: right;    
-    position: relative;
+    height:80vh;
+
   }
+
 
   .Messages-list {
     padding: 20px 0;
