@@ -51,14 +51,14 @@ class Chat extends Component {
         return (
             <div class='container'>
                 <div class='row'>
-                    <div class="col-9">
+                    <div class="col-10">
                         <div class="Chat" id="Chat">
                         <Messages currentMember={this.props.user} messages={this.state.messages} />
                         </div>
                         <Input onMessageSend={this.onMessageSend} />
                     </div>
 
-                    <div class="col-3 coins">
+                    <div class="col-2 coins">
                         <h5>4000 coins</h5>
                         <img src='coins.svg'></img>
                     </div>
