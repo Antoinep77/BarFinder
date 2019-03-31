@@ -37,7 +37,7 @@ class Message extends Component {
                         {member.username}
                     </div>
                     <div className="text" onClick={this.showReaction}>{text}</div>
-                    <Reaction active={this.state.reaction} hide={this.hideReaction}/>
+                    <Reaction active={this.state.reaction} hide={this.hideReaction} onReact={(reaction) => this.props.onReact(_id, reaction)}/>
                 </div>
             </li>
         );

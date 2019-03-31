@@ -41,8 +41,8 @@ class Chat extends Component {
         objDiv.scrollTop = objDiv.scrollHeight;
     }
 
-    chooseReaction(id) {
-        console.log(id);
+    onReact = (_id, reaction) => {
+        this.props.socket.emit('reaction', {_id,reaction});
     }
 
     render() {
@@ -52,11 +52,11 @@ class Chat extends Component {
             <p>Casez le mot : {this.props.mission.word}</p>
         </div> : "No mission";
         return (
-            <div class='container'>
-                <div class='row'>
-                    <div class="col-10">
-                        <div class="Chat" id="Chat">
-                            <Messages currentMember={this.props.user} messages={this.state.messages} />
+            <div className='container'>
+                <div className='row'>
+                    <div className="col-10">
+                        <div className="Chat" id="Chat">
+                            <Messages currentMember={this.props.user} messages={this.state.messages} onReact={this.onReact}/>
                         </div>
                         <Input onMessageSend={this.onMessageSend} />
                     </div>
