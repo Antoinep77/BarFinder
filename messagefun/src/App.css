@@ -142,6 +142,8 @@
     font-size: 5;
   }
   
+
+
   .reaction li {
     float: left;
   }
@@ -156,5 +158,5 @@
   
   /* Change the link color to #111 (black) on hover */
   .reaction li a:hover {
-    background-color: #111;
+    background-color:grey;
   }
