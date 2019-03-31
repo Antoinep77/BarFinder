@@ -7,6 +7,8 @@ class Reaction extends Component {
     render(){
         if(this.props.active){
             return <div>Wesh</div>
+        }else{
+            return ""
         }
     }
 }
