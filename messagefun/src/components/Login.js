@@ -39,7 +39,7 @@ class Login extends Component {
                 />
                 <button>Send</button>
                 </div>
-                <div class="form-check animals">
+                <div className="form-check animals">
                     <label><input type="radio" name="animal" value="1430104"/><img src='logos/noun_Animal_1430104.png'></img></label>
                     <label><input type="radio" name="animal" value="1658831" onChange={e => this.onChangeRadio(e)} /><img src='logos/noun_Animal_1658831.png'></img></label>
                     <label><input type="radio" name="animal" value="1658853" onChange={e => this.onChangeRadio(e)}/><img src='logos/noun_Animal_1658853.png'></img></label>

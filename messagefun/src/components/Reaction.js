@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Reaction extends Component {
     onClick = e => {
-        console.log(e.target);
+        this.props.onReact(e.target.name);
         this.props.hide();
     }
     render() {
