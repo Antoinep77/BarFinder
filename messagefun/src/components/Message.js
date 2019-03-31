@@ -14,8 +14,8 @@ class Message extends Component {
         this.setState({ reaction: true })
     }
 
-    componentWillMount() {
-        console.log(this.props.message.member.username)
+    hideReaction = () => {
+        this.setState({ reaction: false })
     }
 
     render() {
@@ -28,14 +28,16 @@ class Message extends Component {
             <li className={className} key={_id} >
                 <span
                     className="avatar"
-                    style={{ backgroundColor: "blue" }}
+                    style={{ backgroundImage: 'url("logos/noun_Animal_'+member.animal+'.png")',
+                                backgroundSize: '35px 35px'
+                 }}
                 />
                 <div className="Message-content">
                     <div className="username">
                         {member.username}
                     </div>
                     <div className="text" onClick={this.showReaction}>{text}</div>
-                    <Reaction active={this.state.reaction} />
+                    <Reaction active={this.state.reaction} hide={this.hideReaction}/>
                 </div>
             </li>
         );
