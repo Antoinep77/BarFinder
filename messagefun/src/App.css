@@ -14,27 +14,35 @@
   }
 
   .Login h1 {
-    margin-bottom:5vh;
+    margin-bottom:15vh;
     text-align:center;
   }
-
-  .Login h2 {
-    
+  .usernameLogin {
+    text-align:center;
+    margin-bottom:10vh;
+  }
+  .Login img{
+    width: 35px;
+    height: 35px
+  }
+  .Login {
     text-align:center;
   }
   .Login form {
     margin-bottom:50vh;
-    width:10vw;
-    text-align : center;
-    margin-right:50vw;
+
+  }
+
+  .animals{
+    text-align:center;
   }
   
   .Chat{
     overflow:auto;
-    height:100vh;
-    float: right;    
-    position: relative;
+    height:80vh;
+
   }
+
 
   .Messages-list {
     padding: 20px 0;

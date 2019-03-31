@@ -49,10 +49,13 @@ class Chat extends Component {
     
     render() {
         return (
-            <div class="Chat" id="Chat">
-                <Messages chooseReaction={this.chooseReaction} currentMember={this.props.user} messages={this.state.messages} />
+            <div>
+                <div class="Chat" id="Chat">
+                <Messages currentMember={this.props.user} messages={this.state.messages} />
+                </div>
                 <Input onMessageSend={this.onMessageSend} />
             </div>
+            
         )
     }
 }
