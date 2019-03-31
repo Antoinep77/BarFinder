@@ -5,7 +5,8 @@ var missionSchema = new Schema({
   username:  String,
   word: String,
   point: Number,
-  current: Boolean
+  current: Boolean,
+  date: Date
 });
 
 module.exports = mongoose.model('mission', missionSchema);

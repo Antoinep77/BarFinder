@@ -3,7 +3,7 @@ var io = require('socket.io')(5000,{ origins: '*:*'});
 var messages  = require("./models/message")
 var missions = require("./models/mission")
 var mongoose = require('mongoose');
-var checkWords = require('./checkMissions/checkWord');
+var checkWords = require('./missions/checkWord');
 
 var messageRouter = require('./routes/messages');
 var missionRouter = require('./routes/missions');
@@ -29,10 +29,25 @@ app.listen(4000, function () {
 io.on('connection', function (socket) {
   console.log("connected")
 
+  socket.on('join', member =>{
+    missions.findOne({current:true,username: member.username}).then(mission =>{
+      if(!mission){
+        var newMission = generateMission(member.username)
+        missions.create(newMission).then( newM=> io.emit('mission',newM))
+      }
+    })
+  })
+
   socket.on('msg', msg => {
     messages.create(msg).then(newMsg => io.emit('msg',newMsg))
     .catch(console.log)
-    checkWords(msg.text,msg.member.username).then(console.log,console.log)
+
+    checkWords(msg.text,msg.member.username).then( missionCompleted => {
+      if(missionCompleted){
+        setTimeout(()=>io.emit('mission_complete',missionCompleted),10000)
+      }
+    });
+
   });
 });
 

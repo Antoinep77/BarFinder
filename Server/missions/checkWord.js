@@ -7,14 +7,11 @@ module.exports = (msgText,username) => {
         if(m ){
             var ponctPattern = "[\\(\\)\\[\\]\"'\\-,;:\\/!\\?\\. ]"
             var regexpPattern = new RegExp("(^|"+ponctPattern+")"+m.word+"("+ponctPattern+"|$)");
-            console.log(msgText)
-            console.log(regexpPattern)
             if(regexpPattern.test(msgText.toLowerCase())){
-                missions.findByIdAndUpdate(m._id,{current:false,point}).then()
-                console.log("mission achieve")
-                return true;
+                return missions.findByIdAndUpdate(m._id,{current:false,point, date: new Date()})
+
             }
         }
-        return false
+        return null
     })
 }
