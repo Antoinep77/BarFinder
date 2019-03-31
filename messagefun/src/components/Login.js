@@ -23,7 +23,7 @@ class Login extends Component {
             
             <form class="form-inline" onSubmit={e => this.onSubmit(e)}>
                 
-                <div class="form-group username">
+                <div class="form-group usernameLogin">
                 <h2>Please enter your username :</h2>
                 <input
                     onChange={e => this.onChange(e)}
