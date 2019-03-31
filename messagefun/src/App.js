@@ -9,17 +9,19 @@ class App extends Component {
     super()
     this.state = {
       user: undefined,
-      mission:undefined
+      animal : undefined,
+      mission : undefined
     }
   }
-  
-  onSubmit = user => {
+  onSubmit = (user,animal) => {
     this.setState({
       user: {
-        username: user
+        username: user,
+        animal: animal
       }
     });
-    axios.get('http://192.168.43.173:4000/missions/'+user).then(mission=> this.setState(mission))
+    axios.get('http://192.168.43.173:4000/missions/'+user).then(mission=>{console.log(mission);this.setState({mission})})
+    .catch(console.log)
   }
 
   render() {

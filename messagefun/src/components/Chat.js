@@ -48,11 +48,23 @@ class Chat extends Component {
     
     render() {
         return (
-            <div>
-                <div className="Chat" id="Chat">
-                <Messages currentMember={this.props.user} messages={this.state.messages} />
+            <div class='container'>
+                <div class='row'>
+                    <div class="col-10">
+                        <div class="Chat" id="Chat">
+                        <Messages currentMember={this.props.user} messages={this.state.messages} />
+                        </div>
+                        <Input onMessageSend={this.onMessageSend} />
+                    </div>
+
+                    <div class="col-2 coins">
+                        <h5>4000 coins</h5>
+                        <img src='coins.svg'></img>
+                    </div>
+                
                 </div>
-                <Input onMessageSend={this.onMessageSend} />
+                
+                
             </div>
             
         )

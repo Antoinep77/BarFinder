@@ -28,7 +28,9 @@ class Message extends Component {
             <li className={className} key={_id} >
                 <span
                     className="avatar"
-                    style={{ backgroundColor: "blue" }}
+                    style={{ backgroundImage: 'url("logos/noun_Animal_'+member.animal+'.png")',
+                                backgroundSize: '35px 35px'
+                 }}
                 />
                 <div className="Message-content">
                     <div className="username">
