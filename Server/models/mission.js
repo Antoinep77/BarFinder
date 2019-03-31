@@ -7,6 +7,7 @@ var missionSchema = new Schema({
   point: Number,
   current: Boolean,
   trigger_msg_id: String,
+  achieved: Boolean,
   blocked: Boolean,
   date: Date
 });
