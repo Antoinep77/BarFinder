@@ -44,6 +44,7 @@ io.on('connection', function (socket) {
 
   socket.on('reaction', reaction => {
     if (reaction.reaction == "nope") {
+      console.log(reaction)
       missions.findOne({ trigger_msg_id: reaction._id }).then(m => {
         if (m) {
           missions.findByIdAndUpdate(m._id, { blocked: true })
@@ -69,7 +70,9 @@ io.on('connection', function (socket) {
           setTimeout((() => {
             missions.findById(missionCompleted._id).then(m => {
               if (!m.blocked) {
-                io.emit('mission_complete', { message: msg, mission: missionCompleted })
+                missions.findByIdAndUpdate(m._id,{achieved:true})
+                .then(m => io.emit('mission_complete', { message: msg, mission: m }))
+               
               }
             })
           }), 10000)
