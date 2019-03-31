@@ -180,6 +180,8 @@
   }
 
   .table{
-    margin-top:7vh;
-    overflow:scroll;
+    overflow-y: scroll;
+    display:block;
+    height: 400px;
+    width:300px;
   }
