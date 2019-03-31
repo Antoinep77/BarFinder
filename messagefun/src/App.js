@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.socket = io('http://192.168.43.173:5000');
+    this.socket = io('http://192.168.43.88:5000');
     this.state = {
       user: undefined,
       animal : undefined,

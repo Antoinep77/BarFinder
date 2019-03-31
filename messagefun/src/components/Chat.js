@@ -12,7 +12,7 @@ class Chat extends Component {
             messages: []
         }
 
-        axios.get('http://192.168.43.173:4000/messages').then(m => {
+        axios.get('http://192.168.43.88:4000/messages').then(m => {
             this.setState({ messages: m.data });
         }).catch(console.log)
 
