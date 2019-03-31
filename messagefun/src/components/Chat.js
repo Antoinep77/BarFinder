@@ -15,8 +15,7 @@ class Chat extends Component {
 
         axios.get('http://192.168.43.173:4000/messages').then(m => {
             this.setState({messages:m.data});
-
-    })
+    }).catch(console.log)
 
         this.socket.on('msg', msg => {
             var messages = this.state.messages;
@@ -42,6 +41,10 @@ class Chat extends Component {
     scrollToBottom() {
         var objDiv = document.getElementById("Chat");
         objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    chooseReaction(id){
+        console.log(id);
     }
     
     render() {
