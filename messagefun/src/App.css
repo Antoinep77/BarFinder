@@ -13,6 +13,7 @@
     color: white;
   }
 
+
   .Login h1 {
     margin-bottom:15vh;
     text-align:center;
@@ -180,4 +181,5 @@
 
   .table{
     margin-top:7vh;
+    overflow:scroll;
   }

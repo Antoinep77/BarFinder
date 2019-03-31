@@ -12,7 +12,7 @@ class Chat extends Component {
             messages: []
         }
 
-        axios.get('http://192.168.43.173:4000/messages').then(m => {
+        axios.get('http://192.168.43.88:4000/messages').then(m => {
             this.setState({ messages: m.data });
         }).catch(console.log)
 
@@ -66,11 +66,11 @@ class Chat extends Component {
                         <img src='coins.svg'></img>
                         <div class="mission">{mission}</div>
                         <table class="table">
-                            <thead class="thead-dark">
+                            <thead class="thead-light">
                                 <tr>
-                                    <td>rank</td>
-                                    <td>username</td>
-                                    <td>score</td>
+                                    <th>rank</th>
+                                    <th>username</th>
+                                    <th>score</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,9 +97,7 @@ class Chat extends Component {
 
 
             </div>
-
         )
     }
 }
-
 export default Chat;
