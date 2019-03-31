@@ -143,12 +143,14 @@
     border-radius: 12px;
     font-size: 5;
     cursor:pointer;
+    width:160px;
   }
   
 
 
   .reaction li {
     float: left;
+    width:auto;
   }
   
   .reaction li a {
@@ -157,6 +159,7 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    width:auto;
   }
   
   /* Change the link color to #111 (black) on hover */
@@ -170,4 +173,8 @@
     color:white;
     border-radius:4px;
     margin-top:7vh;
+  }
+
+  .emoticone{
+    text-align:right;
   }
