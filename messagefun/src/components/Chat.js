@@ -85,7 +85,7 @@ class Chat extends Component {
                             <tbody>
                                 {this.state.scores.map((user, ind) => 
                                 <tr>
-                                    <td>{ind}</td>
+                                    <td>{ind+1}</td>
                                     <td>{user.username}</td>
                                     <td>{user.score}</td>
                                 </tr>)}
