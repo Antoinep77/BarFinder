@@ -29,14 +29,6 @@ app.listen(4000, function () {
 io.on('connection', function (socket) {
   console.log("connected")
 
-  socket.on('join', member =>{
-    missions.findOne({current:true,username: member.username}).then(mission =>{
-      if(!mission){
-        var newMission = generateMission(member.username)
-        missions.create(newMission).then( newM=> io.emit('mission',newM))
-      }
-    })
-  })
 
   socket.on('msg', msg => {
     messages.create(msg).then(newMsg => io.emit('msg',newMsg))

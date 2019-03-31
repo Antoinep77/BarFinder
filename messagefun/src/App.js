@@ -2,21 +2,26 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from './components/Login';
 import Chat from './components/Chat';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: undefined
+      user: undefined,
+      mission:undefined
     }
   }
+  
   onSubmit = user => {
     this.setState({
       user: {
         username: user
       }
-    })
+    });
+    axios.get('http://192.168.43.173:4000/missions/'+user).then(mission=> this.setState(mission))
   }
+
   render() {
     return (
       <div className="App">
