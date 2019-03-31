@@ -71,6 +71,7 @@
   
   .Message-content {
     display: inline-block;
+    
   }
   
   .currentMember > .Message-content {
@@ -100,6 +101,7 @@
     background-color: cornflowerblue;
     color: white;
     display: inline-block;
+    cursor:pointer;
   }
   
   .currentMember > .Message-content .text {
