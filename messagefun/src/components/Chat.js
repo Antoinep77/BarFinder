@@ -65,6 +65,32 @@ class Chat extends Component {
                         <h5>4000 coins</h5>
                         <img src='coins.svg'></img>
                         <div class="mission">{mission}</div>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <td>rank</td>
+                                    <td>username</td>
+                                    <td>score</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Pierre</td>
+                                    <td>10300</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Paul</td>
+                                    <td>300</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Jack</td>
+                                    <td>-1000</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>

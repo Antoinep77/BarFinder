@@ -10,6 +10,10 @@ class Message extends Component {
         }
     }
 
+    componentDidUpdate() {
+        let objDiv = document.getElementById("Chat");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
     showReaction = () => {
         this.setState({ reaction: !this.state.reaction })
     }
@@ -17,6 +21,7 @@ class Message extends Component {
     hideReaction = () => {
         this.setState({ reaction: false })
     }
+
 
     render() {
         const { _id, member, text } = this.props.message;

@@ -168,13 +168,16 @@
   }
 
   .mission {
-    background-color:cornflowerblue;
     text-align:center;
-    color:white;
+    color:black;
     border-radius:4px;
     margin-top:7vh;
   }
 
   .emoticone{
     text-align:right;
+  }
+
+  .table{
+    margin-top:7vh;
   }
