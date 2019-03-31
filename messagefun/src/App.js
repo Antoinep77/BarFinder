@@ -12,14 +12,15 @@ class App extends Component {
       mission:undefined
     }
   }
-  
+
   onSubmit = user => {
     this.setState({
       user: {
         username: user
       }
     });
-    axios.get('http://192.168.43.173:4000/missions/'+user).then(mission=> this.setState(mission))
+    axios.get('http://192.168.43.173:4000/missions/'+user).then(mission=>{console.log(mission);this.setState({mission})})
+    .catch(console.log)
   }
 
   render() {
