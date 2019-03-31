@@ -42,16 +42,39 @@ io.on('connection', function (socket) {
     }).catch(console.log)
   })
 
+  socket.on('reaction',reaction =>{
+    console.log(reaction)
+    if (reaction.reaction == "nope"){
+      missions.findOne({trigger_msg_id:reaction._id}).then( m =>{
+        if(m){
+          missions.findByIdAndUpdate(m._id,{blocked: true})
+          .then(newM => io.emit('mission_blocked',{user:reaction.currentMember,mission:newM}))
+        }else{
+            io.emit('mission_blocked_failed',{user:reaction.currentMember})
+        }
+      }).catch(console.log)
+    }
+  })
+
 
   socket.on('msg', msg => {
     messages.create(msg).then(newMsg => io.emit('msg',newMsg))
     .catch(console.log)
 
-    checkWords(msg.text,msg.member.username).then( missionCompleted => {
+    checkWords(msg).then( missionCompleted => {
       if(missionCompleted){
+        //generate new mission
         missions.create(generateMission(missionCompleted.username))
         .then( newM=> socket.emit('mission',newM))
-        setTimeout(()=>io.emit('mission_complete',{message:msg,mission:missionCompleted}),10000)
+
+        // wait a bit before 
+        setTimeout((()=>{
+          missions.findById(missionCompleted._id).then(m=>{
+              if(!m.blocked){
+                io.emit('mission_complete',{message:msg,mission:missionCompleted})
+              }
+          })
+        }),10000)
       }
     });
 
