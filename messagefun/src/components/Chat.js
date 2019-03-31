@@ -28,7 +28,6 @@ class Chat extends Component {
     componentDidUpdate(){
         let objDiv = document.getElementById("Chat");
         objDiv.scrollTop = objDiv.scrollHeight;
-        console.log( objDiv.scrollHeight)
     }
     onMessageSend = message => {
         let newMessage = {

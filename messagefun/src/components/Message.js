@@ -14,10 +14,6 @@ class Message extends Component {
         this.setState({ reaction: true })
     }
 
-    componentWillMount() {
-        console.log(this.props.message.member.username)
-    }
-
     render() {
         const { _id, member, text } = this.props.message;
         const { currentMember } = this.props;
