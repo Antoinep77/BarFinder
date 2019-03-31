@@ -1,8 +1,9 @@
+var fs = require('fs');
+
 function generateWord () {
-    var fs = require('fs');
-    var textByLine = fs.readFileSync('french_words.txt').toString().split("\n");
+    var textByLine = fs.readFileSync('./missions/french_words.txt',{encoding:'utf8'}).split("\n");
     var n = textByLine.length;
-    var k = Math.random*n;
+    var k = Math.floor(Math.random()*n);
     return(textByLine[k].split(',')[1])
 }
 
