@@ -15,32 +15,37 @@ class Chat extends Component {
 
         axios.get('http://192.168.43.88:4000/messages').then(m => {
             this.setState({ messages: m.data });
+            let objDiv = document.getElementById("Chat");
+            objDiv.scrollTop = objDiv.scrollHeight;
         }).catch(console.log)
 
         this.props.socket.on('msg', msg => {
             var messages = this.state.messages;
             messages.push(msg);
-            this.setState({ messages })
+            let objDiv = document.getElementById("Chat");
+            objDiv.scrollTop = objDiv.scrollHeight;
+            this.setState({ messages });
         });
 
         this.props.socket.on('score', scores => {
             console.log("scores!")
             this.setState({ scores })
         })
+        this.props.socket.on('update_message', m => {
+            console.log(m);
+            this.setState({messages: this.state.messages.map(msg => msg._id ===m._id ? m : msg)})
+          })
         this.onMessageSend = this.onMessageSend.bind(this)
 
     }
-    componentDidUpdate() {
-        let objDiv = document.getElementById("Chat");
-        objDiv.scrollTop = objDiv.scrollHeight;
-    }
+
     onMessageSend = message => {
         let newMessage = {
             text: message,
             member: this.props.user,
             date: new Date()
         }
-        this.props.socket.emit('msg', newMessage)
+        this.props.socket.emit('msg', newMessage);
     }
     scrollToBottom() {
         var objDiv = document.getElementById("Chat");
@@ -83,12 +88,12 @@ class Chat extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.scores.map((user, ind) => 
-                                <tr>
-                                    <td>{ind+1}</td>
-                                    <td>{user.username}</td>
-                                    <td>{user.score}</td>
-                                </tr>)}
+                                {this.state.scores.map((user, ind) =>
+                                    <tr>
+                                        <td>{ind + 1}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.score}</td>
+                                    </tr>)}
                             </tbody>
                         </table>
                     </div>
