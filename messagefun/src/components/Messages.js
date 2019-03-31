@@ -1,6 +1,7 @@
 import { Component } from "react";
 import React from "react";
 
+
 class Messages extends Component {
     renderMessage(message) {
         const { id, member, text } = message;
@@ -14,7 +15,9 @@ class Messages extends Component {
             <li className={className} key={id} >
                 <span
                     className="avatar"
-                    style={{ backgroundColor: "blue" }}
+                    style={{ backgroundImage: 'url("logos/noun_Animal_'+member.animal+'.png")',
+                                backgroundSize: '35px 35px'
+                 }}
                 />
                 <div className="Message-content">
                     <div className="username">
