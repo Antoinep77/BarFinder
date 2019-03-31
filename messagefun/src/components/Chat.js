@@ -60,7 +60,7 @@ class Chat extends Component {
         let mission = this.props.mission ?
             <div className="mission">
                 <h4>Mission</h4>
-                <p>Casez le mot : {this.props.mission.word}</p>
+                <p>Try to put the word : {this.props.mission.word}</p>
             </div> : "No mission";
         let score = 0;
         console.log(this.state.scores);
