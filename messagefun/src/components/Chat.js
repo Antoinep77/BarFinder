@@ -72,6 +72,13 @@ class Chat extends Component {
                         <img src='coins.svg'></img>
                         <div class="mission">{mission}</div>
                         <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>rank</th>
+                                    <th>username</th>
+                                    <th>score</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 {this.state.scores.map((user, ind) => 
                                 <tr>
@@ -87,9 +94,7 @@ class Chat extends Component {
 
 
             </div>
-
         )
     }
 }
-
 export default Chat;
